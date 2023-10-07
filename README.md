@@ -1346,7 +1346,9 @@ FORBIDDEN_ARTICLE(HttpStatus.FORBIDDEN, "게시글 수정, 삭제에 대한 권�
 VALUE_IS_NONNULL(HttpStatus.BAD_REQUEST, "필수값을 입력하지 않았습니다.", "null 값이 허용되지 않으므로 반드시 값을 전달해주세요."),
 ```
 
+이외에도 GeneralExceptionHandler를 작성 중입니다.
 
+### 스터디 PR 이후, 발표 전까지 다른 엔티티 생성 및 API 추가 개발과 에러 처리를 진행할 예정입니다! 
 
 ---
 ###  **🐣 이전 주차 기준 변경 사항  🐣**
