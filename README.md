@@ -1301,6 +1301,32 @@ TODO: 로그인 구현 후 해당 메서드 사용 예정입니다!
 ➤ **`GeneralExceptionHandler`** 로 예외 처리를 담당합니다.
 - 여러 예외를 처리하기 위해 `@ExceptionHandler` 어노테이션을 사용합니다.
 - 현재까지는 사용자 정의 예외인 `KarrotException`과 Spring의 `MethodArgumentNotValidException`에 대한 예외 처리가 있습니다.
+```java 
+    // KarrotException이 발생하면 예외 상태, 메시지, 해결 방법을 JSON 응답으로 반환
+@ExceptionHandler(KarrotException.class)
+public ResponseEntity<Map<String, Object>> handleKarrotException(KarrotException ex) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", ex.getStatus());
+        response.put("message", ex.getMessage());
+        response.put("solution", ex.getSolution());
+        return ResponseEntity.status(ex.getStatus()).body(response);
+        }
+
+@ExceptionHandler(MethodArgumentNotValidException.class)
+public ResponseEntity<Map<String, Object>> handleValidationException(MethodArgumentNotValidException ex) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", 400); // 상태 코드는 400 (Bad Request)
+        response.put("message", "입력 값의 유효성 검증에 실패했습니다. 데이터를 수정하세요.");
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+        String fieldName = ((FieldError) error).getField();
+        String errorMessage = error.getDefaultMessage();
+        errors.put(fieldName, errorMessage);
+        });
+        response.put("errors", errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+```
 
 ➤ **`KarrotException`** 클래스를 사용해 사용자 정의 예외를 생성했습니다.
 
