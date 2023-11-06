@@ -1332,8 +1332,8 @@ public KarrotException(ErrorCode errorCode, String message, String solution) {
 }
 ```
 
-ex) 잘못된 Method 사용했을 경우
-<img width="638" alt="스크린샷 2023-10-07 13 29 47" src="https://github.com/CEOS-Developers/spring-tutorial-18th/assets/77966605/2ccacfae-ecdd-4e5b-a70c-eaa79d6c0b72">
+ex) 게시글이 존재하지 않는데 delete 요청한 경우
+<img width="692" alt="스크린샷 2023-11-06 16 49 41" src="https://github.com/yeni-choi/yeni-choi/assets/77966605/68e1edcd-c377-42b4-809f-6dbcc794a9d0">
 
 
 <br>
@@ -1346,9 +1346,7 @@ FORBIDDEN_ARTICLE(HttpStatus.FORBIDDEN, "게시글 수정, 삭제에 대한 권�
 VALUE_IS_NONNULL(HttpStatus.BAD_REQUEST, "필수값을 입력하지 않았습니다.", "null 값이 허용되지 않으므로 반드시 값을 전달해주세요."),
 ```
 
-이외에도 GeneralExceptionHandler를 작성 중입니다.
 
-### 스터디 PR 이후, 발표 전까지 다른 엔티티 생성 및 API 추가 개발과 에러 처리를 진행할 예정입니다! 
 
 ---
 ###  **🐣 이전 주차 기준 변경 사항  🐣**
@@ -1360,11 +1358,6 @@ VALUE_IS_NONNULL(HttpStatus.BAD_REQUEST, "필수값을 입력하지 않았습니
   등등...
   다 기록은 하지 못했지만 이외에도 많은 수정을 거쳤습니다.
   꼼꼼하게 코드 리뷰 주신 분들 다시 한 번 감사드립니다 🙇🏻‍♀️
-
----
-###  **❓ 고민해볼 사항 ❓**
-- 가격 제안 로직 추가 여부
-
 ---
 ###  **❎ 참고  ❎**
 
