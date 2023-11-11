@@ -1863,23 +1863,23 @@ public UserResponseDto getMyInfo(User currentUser) {
 유저 정보를 찾지 못했을시 MEMBER_NOT_FOUND: "유저 정보를 찾지 못했습니다.", "email 과 password 를 올바르게 입력했는지 확인해주세요"
 
 ---
-<img width="684" alt="스크린샷 2023-11-11 12 21 33" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/54c5a298-de40-4ac2-868b-e6cbe34d3367">
+<img width="500" alt="스크린샷 2023-11-11 12 21 33" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/54c5a298-de40-4ac2-868b-e6cbe34d3367">
 <br>
 
 **↓ 비밀번호 충족 못 할 경우**
 <br>
-<img width="350" alt="스크린샷 2023-11-11 12 22 33" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/91abb131-880f-4a38-9f54-ed406cbf2a7b">
+<img width="500" alt="스크린샷 2023-11-11 12 22 33" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/91abb131-880f-4a38-9f54-ed406cbf2a7b">
 <br>
 
 **↓ 이미 존재할 회원일 경우**
 <br>
-<img width="350" alt="스크린샷 2023-11-11 12 26 02" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/0c883e6e-dda0-447e-8851-dbc454e7f158">
+<img width="500" alt="스크린샷 2023-11-11 12 26 02" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/0c883e6e-dda0-447e-8851-dbc454e7f158">
 <br>
 
-<img width="350" alt="스크린샷 2023-11-11 12 29 14" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/6ad01b25-525f-47fa-90d4-d6146ef41b40">
-
-<img width="350" alt="스크린샷 2023-11-11 12 45 59" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/4010939c-f1fc-45c6-a16d-458d833bd152">
-
+<img width="500" alt="스크린샷 2023-11-11 12 29 14" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/6ad01b25-525f-47fa-90d4-d6146ef41b40">
+<br>
+<img width="500" alt="스크린샷 2023-11-11 12 45 59" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/4010939c-f1fc-45c6-a16d-458d833bd152">
+<br>
 JWT는 세션 데이터의 서버 측 스토리지가 필요하지 않으므로 분산 시스템에서 확장성이 좋다는 이점도 있지만 페이로드에 3종류의 클레임을 저장하기에 네트워크에 부하가 걸릴 수 있다는 단점도 있는 것 같다.
 
 이번 스터디를 통해 배운 내용을 실전에서 적용하면서 더 나은 코드와 안전한 서비스를 제공하고 싶다.
