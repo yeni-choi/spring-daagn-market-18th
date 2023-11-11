@@ -12,7 +12,7 @@ import com.ceos18.springboot.login.CurrentUser;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/member")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
