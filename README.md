@@ -1889,13 +1889,13 @@ JWT는 세션 데이터의 서버 측 스토리지가 필요하지 않으므로 
 
 ---
 ### 🫰 참고
-https://jwt.io/introduction
-https://velog.io/@sozohoy/%ED%86%A0%ED%81%B0-%EC%9D%B8%EC%A6%9D-JWTJson-Web-Token-Access-Token-Refresh-Token
-https://inpa.tistory.com/entry/WEB-%F0%9F%93%9A-JWTjson-web-token-%EB%9E%80-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC
-https://ablue-1.tistory.com/70
-https://velog.io/@pu1etproof/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8-%EC%BF%A0%ED%82%A4-%EC%84%B8%EC%85%98-%ED%86%A0%ED%81%B0-%EC%BA%90%EC%8B%9C
-https://velog.io/@corgi/Spring-Security-PasswordEncoder%EB%9E%80-4kkyw8gi
+- https://jwt.io/introduction
+- https://velog.io/@sozohoy/%ED%86%A0%ED%81%B0-%EC%9D%B8%EC%A6%9D-JWTJson-Web-Token-Access-Token-Refresh-Token
+- https://inpa.tistory.com/entry/WEB-%F0%9F%93%9A-JWTjson-web-token-%EB%9E%80-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC
+- https://ablue-1.tistory.com/70
+- https://velog.io/@pu1etproof/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8-%EC%BF%A0%ED%82%A4-%EC%84%B8%EC%85%98-%ED%86%A0%ED%81%B0-%EC%BA%90%EC%8B%9C
+- https://velog.io/@corgi/Spring-Security-PasswordEncoder%EB%9E%80-4kkyw8gi
 
-
-🖍️ OAuth + JWT 구현 시 프엔과 백엔의 역할
-https://velog.io/@max9106/OAuth
+<br>
+🖍️ OAuth + JWT 구현 시 프엔과 백엔의 역할 <br>
+- https://velog.io/@max9106/OAuth
