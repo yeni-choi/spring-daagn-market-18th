@@ -1,4 +1,4 @@
-package com.ceos18.springboot.login.request;
+package com.ceos18.springboot.login.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

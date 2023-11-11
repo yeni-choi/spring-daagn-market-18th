@@ -1,4 +1,4 @@
-package com.ceos18.springboot.login.service;
+package com.ceos18.springboot.jwt;
 
 import com.ceos18.springboot.security.PrincipalDetails;
 import com.ceos18.springboot.security.PrincipalDetailsService;

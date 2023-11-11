@@ -3,7 +3,7 @@ package com.ceos18.springboot.auth.controller;
 import com.ceos18.springboot.auth.service.AuthService;
 import com.ceos18.springboot.common.dto.NormalResponseDto;
 import com.ceos18.springboot.common.dto.TokenDto;
-import com.ceos18.springboot.login.request.LoginRequestDto;
+import com.ceos18.springboot.login.dto.LoginRequestDto;
 import com.ceos18.springboot.user.dto.UserRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

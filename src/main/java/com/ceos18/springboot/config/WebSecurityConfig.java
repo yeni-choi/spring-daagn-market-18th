@@ -2,7 +2,7 @@ package com.ceos18.springboot.config;
 
 import com.ceos18.springboot.exception.JwtAuthenticationEntryPoint;
 import com.ceos18.springboot.jwt.JwtAuthenticationFilter;
-import com.ceos18.springboot.login.service.JwtTokenProvider;
+import com.ceos18.springboot.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.*;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;

@@ -2,7 +2,6 @@ package com.ceos18.springboot.jwt;
 
 import com.ceos18.springboot.exception.ErrorCode;
 import com.ceos18.springboot.exception.KarrotException;
-import com.ceos18.springboot.login.service.JwtTokenProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

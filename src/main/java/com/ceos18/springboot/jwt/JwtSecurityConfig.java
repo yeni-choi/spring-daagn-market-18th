@@ -1,6 +1,5 @@
 package com.ceos18.springboot.jwt;
 
-import com.ceos18.springboot.login.service.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
