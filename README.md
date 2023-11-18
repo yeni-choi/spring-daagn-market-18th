@@ -11,6 +11,7 @@
 [WEEK 2 | DB 모델링과 JPA](#CEOS-WEEK-2:DB-모델링과-JPA-🥕) <br>  
 [WEEK 3 | CRUD API 만들기](#CEOS-WEEK-3:-CRUD-API-만들기-🎁) <br>
 [WEEK 4 | Spring Security와 로그인](#CEOS-WEEK-4:-Spring-Security와-로그인) <br>
+[WEEK 5 | Docker](#CEOS-WEEK-5:-Docker) <br>
 
 
 </div>  
@@ -1922,13 +1923,13 @@ JWT는 세션 데이터의 서버 측 스토리지가 필요하지 않으므로 
 -   가상 머신은 물리적 호스트와 그 위에 설치되는 가상화 하이퍼바이저에서 작동
     [![](https://github.com/kiworkshop/2021-docker-study/raw/master/1%ED%9A%8C%EC%B0%A8/yoonseo/img/container-vm-whatcontainer_2.png)](https://github.com/kiworkshop/2021-docker-study/blob/master/1%ED%9A%8C%EC%B0%A8/yoonseo/img/container-vm-whatcontainer_2.png)
 
-### Docker
+### Docker
 -   게스트 OS를 설치하지 않고 이미지에 애플리케이션만 격리해서 설치
   -   호스트 OS와 실행 환경인 도커 엔진을 공유
   -   메모리 접근, 파일시스템, 네트워크 속도가 가상머신에 비해 월등히 빠름
       ![Container what is container](https://www.docker.com/wp-content/uploads/2021/11/container-what-is-container.png)
 
-###  2. Docker에 대해 더 알아보기
+###  2. Docker에 대해 더 알아보기
 ### 정의
 -   리눅스 **컨테이너** 기반의 오픈소스 가상화 플랫폼
   -   다양한 환경을 컨테이너로 추상화하고, 동일한 인터페이스를 제공해 프로그램의 배포 및 관리를 단순하게 제공 - 컨테이너의 다양화
@@ -2019,7 +2020,7 @@ bridge name     bridge id               STP enabled     interfaces
 docker0         8000.02420149e168       no              veth9159bb2
 ```
 
-#### **eth0**
+#### **eth0**
 - 호스트가 사용하는 네트워크 인터페이스를 의미
 
 ### 구조
@@ -2029,7 +2030,7 @@ docker0         8000.02420149e168       no              veth9159bb2
 2️⃣ 동시에 호스트에도  veth (virtual ethernet)라는 네트워크 인터페이스가 할당되고 컨테이너에 할당된  eth0 인터페이스와 통신
 3️⃣ 호스트에 할당된 veth 인터페이스는 docker0와 바인딩되고 docker0는 호스트의 eth0 인터페이스와 연결되어 외부로부터 들어온 요청을 처리
 
-###  3. Docker 로컬에서 실행해보기
+###  3. Docker 로컬에서 실행해보기
 **Dockerfile**
 - 컨테이너에 설치해야하는 패키지, 소스코드, 명령어, 환경변수설정 등을 기록한 하나의 파일
 - Docker의 **build** 명령은 Dockerfile에 기술된 구성 정보(**Dockerfile**)를 바탕으로 **Docker 이미지를 작성**
@@ -2047,12 +2048,14 @@ docker0         8000.02420149e168       no              veth9159bb2
   -   복잡한 환경도 스크립트화 할 수 있기 때문에 자동화가 가능하고 조작이 쉬움
   -   `docker-compose cli`를 이용하여 쉽게 애플리케이션을 관리할 수 있고 자동화가 가능
 
-STEP 1. jar 파일 생성: Gradle 탭에서 Tasks-build-bootJar 실행
+STEP 1. jar 파일 생성: Gradle 탭에서 Tasks-build-bootJar 실행<br>
 STEP 2. Dockerfile 작성 후 Docker 이미지 빌드
 `docker build -t {docker image 이름} {Dockerfile의 위치}`
+<br>
 STEP 3. docker-compose 작성 후 로컬 도커 실행
 `docker-compose -f docker-compose.yml up --build`
 
+<br>
 docker ps 명령어로 확인했을 때 두 개의 이미지가 실행되고 있고 [http://localhost:8080](http://localhost:8080/) 에 접속해 서버가 잘 띄워져있다면 성공
 
 ↓<br>
@@ -2064,7 +2067,7 @@ docker ps 명령어로 확인했을 때 두 개의 이미지가 실행되고 있
 
 ---
 ### 2️⃣ API 추가 구현 및 리팩토링
-`User` 부분을 추가 구현하기로 함
+`User` , `Chatting` 부분을 추가 구현하기로 함
 
 ### 📬 이메일 본인인증 요청
 ### Info
