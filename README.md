@@ -1411,7 +1411,7 @@ Header, Payload, Signature 세 부분으로 구성되어 있다.
 > xxxxx.yyyyy.zzzzz
 
 - **Header**
-    - **토큰 유형(즉, JWT)** 과 **서명 알고리즘 (HMAC SHA256 or RSA)** 두 부분으로 구성된다.
+  - **토큰 유형(즉, JWT)** 과 **서명 알고리즘 (HMAC SHA256 or RSA)** 두 부분으로 구성된다.
 
 >
 ```
@@ -1427,17 +1427,17 @@ Header, Payload, Signature 세 부분으로 구성되어 있다.
 ➤ Base64Url? Binary 데이터를 String으로 바꾸는 인코딩방식
 
 - **Payload**
-    - claims을 포함하는 부분이다.
-    - 클레임은 Entity(주로 사용자) 및 추가 데이터에 대한 설명이다.
-    - 클레임은 registered, public, private 세가지로 나뉜다.
+  - claims을 포함하는 부분이다.
+  - 클레임은 Entity(주로 사용자) 및 추가 데이터에 대한 설명이다.
+  - 클레임은 registered, public, private 세가지로 나뉜다.
 
-        - **Registered claims** :  유용하고 상호간에 사용 가능한 클레임을 제공하기 위해 권장되는 사전에 정의된 클레임 집합.
-            - (EX)![](https://images.velog.io/images/sozohoy/post/6f1ac388-993b-4b0f-9933-30135cb60b47/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.35.19.png)
-        - **Public claims** :  사용자가 마음대로 정의할 수 있는 클레임 집합.
-            - 주의) IANA JSON Web Token Registry에 정의하거나 URL 포맷을 사용해야 충돌을 피할 수 있다.
-            - EX) ``` { "[https://naver.com"](https://naver.com%22/): true } ```
-        - **Private claims** :  사용에 동의하는 당사자 간(parties) 정보를 교환하기 위해 공유하는 커스텀 클레임 집합.
-            - EX)  ``` { "token_type": access }```
+    - **Registered claims** :  유용하고 상호간에 사용 가능한 클레임을 제공하기 위해 권장되는 사전에 정의된 클레임 집합.
+      - (EX)![](https://images.velog.io/images/sozohoy/post/6f1ac388-993b-4b0f-9933-30135cb60b47/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.35.19.png)
+    - **Public claims** :  사용자가 마음대로 정의할 수 있는 클레임 집합.
+      - 주의) IANA JSON Web Token Registry에 정의하거나 URL 포맷을 사용해야 충돌을 피할 수 있다.
+      - EX) ``` { "[https://naver.com"](https://naver.com%22/): true } ```
+    - **Private claims** :  사용에 동의하는 당사자 간(parties) 정보를 교환하기 위해 공유하는 커스텀 클레임 집합.
+      - EX)  ``` { "token_type": access }```
 ```
 { "sub": "1234567890", 
   "name": "John Doe", 
@@ -1446,10 +1446,10 @@ Header, Payload, Signature 세 부분으로 구성되어 있다.
 - 이 JSON 은  `BASE64Url`  로 인코딩되어서 JWT의 두 번째 부분을 구성한다.
 
 - **Signature**
-    - 이 부분에서는 인코딩된 Header와 Payload, Secret (Header에 사용된 알고리즘)이 필요하다.
-    - 토큰이 전송 도중에 변경되지 않았는지 확인하는 데 사용된다.
-    - private key 로 서명된 토큰의 경우, JWT의 전송자가 누구인지도 알 수 있다.
-    - EX) HMAC SHA256 algorithm 을 사용한다면
+  - 이 부분에서는 인코딩된 Header와 Payload, Secret (Header에 사용된 알고리즘)이 필요하다.
+  - 토큰이 전송 도중에 변경되지 않았는지 확인하는 데 사용된다.
+  - private key 로 서명된 토큰의 경우, JWT의 전송자가 누구인지도 알 수 있다.
+  - EX) HMAC SHA256 algorithm 을 사용한다면
 
 ```
 HMACSHA256( base64UrlEncode(header) + "." 
@@ -1513,9 +1513,9 @@ HMACSHA256( base64UrlEncode(header) + "."
 -   사용자 이름, 비밀번호 등의 실제 사용자 자격 증명을 공유하지 않고 한 서비스에서 다른 서비스로 권한 부여를 전달하기 위한 프로토콜.
 - 인증(Authentication)과 인가(Authorization) 중  **인가**에 좀 더 초점을 맞추고 있다.
 - OAuth 2.0에는 4가지 인증 방식이 있는데 그중 **Authorization Code Grant**가 주요 방식이다.
-    - OAuth를 통해 인증, 인가를 제공해주는 서버
-        -  Resource Server: 이름, 이메일 등과 같은 자원을 제공한다.
-        -   Authorization Server: 토큰을 발급해준다.
+  - OAuth를 통해 인증, 인가를 제공해주는 서버
+    -  Resource Server: 이름, 이메일 등과 같은 자원을 제공한다.
+    -   Authorization Server: 토큰을 발급해준다.
 
 ![](https://velog.velcdn.com/images%2Fmax9106%2Fpost%2F5620524a-4359-4abd-b90c-07b65359b3ca%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-07-12%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%204.16.43.png)
 
@@ -1584,7 +1584,7 @@ public TokenDto createToken(String email, String authorities) {
 ```
 - 현재 시각과 access token의 만료 시각을 설정한다.
 - `Jwts.builder()` 메서드를 사용하여 JWT 빌더를 생성한다.
-    -  `setHeaderParam("typ", "JWT")`,`setHeaderParam("alg", "HS512")`: JWT의 헤더 부분 설정 (토큰의 타입, 서명 알고리즘)
+  -  `setHeaderParam("typ", "JWT")`,`setHeaderParam("alg", "HS512")`: JWT의 헤더 부분 설정 (토큰의 타입, 서명 알고리즘)
 - `setSubject("access-token")`: JWT의 subject 설정. (access-token)
 - `claim(EMAIL_KEY, email)` , `claim(AUTHORITIES_KEY, authorities)`: 토큰의 클레임. (이메일, 권한 정보)
 -  `setIssuedAt(now)`: 토큰의 발급 시간 설정.
@@ -1636,7 +1636,7 @@ public Authentication getAuthentication(String token) {
 }
 ```
 -   토큰으로부터 사용자의 이메일 정보 추출하고, `PrincipalDetailsService`를 사용하여 해당 이메일에 대한 사용자 정보를 가져온다.
-    -   `loadUserByUsername` 메서드로  `PrincipalDetails` 객체를 생성하고 `UsernamePasswordAuthenticationToken`로 `Authentication` 객체를 생성하여 반환한다.
+  -   `loadUserByUsername` 메서드로  `PrincipalDetails` 객체를 생성하고 `UsernamePasswordAuthenticationToken`로 `Authentication` 객체를 생성하여 반환한다.
 
 
 **3. JwtAuthenticationFilter**
@@ -1751,8 +1751,8 @@ public ResponseEntity<NormalResponseDto> join(@RequestBody @Valid UserRequestDto
 ```
 
 - **STEP 2. Request Dto를 통해 회원가입 요청 객체 생성**
-    - 비밀번호가 영문 대소문자, 숫자, 특수문자를 최소한 1개씩 포함하고, 총 길이가 8~16자여야 한다는 규칙을 정의했다.
-    - 이 규칙에 맞지 않는 비밀번호가 입력되면 해당 필드에 대한 유효성 검사에서 실패하게 했다.
+  - 비밀번호가 영문 대소문자, 숫자, 특수문자를 최소한 1개씩 포함하고, 총 길이가 8~16자여야 한다는 규칙을 정의했다.
+  - 이 규칙에 맞지 않는 비밀번호가 입력되면 해당 필드에 대한 유효성 검사에서 실패하게 했다.
 
 ```java 
 @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,16}$", message = "비밀번호는 8~16자리수여야 합니다. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함해야 합니다.")  
@@ -1760,8 +1760,8 @@ private String password;
 ```
 
 - **STEP 3. authService의 joinMember 메서드로 회원가입**
-    - 비밀번호는 `passwordEncoder`를 통해 인코딩하여 저장한다.
-    - `@Transactional` 어노테이션으로 메서드가 성공적으로 실행되면 변경된 내용이 DB에 저장되고, 실패하면 롤백되게끔 한다.
+  - 비밀번호는 `passwordEncoder`를 통해 인코딩하여 저장한다.
+  - `@Transactional` 어노테이션으로 메서드가 성공적으로 실행되면 변경된 내용이 DB에 저장되고, 실패하면 롤백되게끔 한다.
 
 ```java 
 @Transactional  
@@ -1774,12 +1774,12 @@ public void joinMember(UserRequestDto requestDto) {
 ### <center>🔐 로그인</center>
 
 - **STEP 1. login으로 로그인 매핑**
-    - authService.login을 통해 로그인 시도 및 토큰 발급한다.
-    - **리프레시 토큰**은 **`HttpCookie`** 로 만들어 응답에 추가한다.
-        - `maxAge`로 쿠키의 유효기간 설정
-        - `httpOnly`로 JavaScript에서 쿠키에 접근하는 것을 방지
-        - `sameSite`로 서드파티 쿠키 사용을 허용하도록 설정하되 `secure`로 HTTPS에서만 전송되도록 설정 (소셜 로그인과 같이 다른 도메인에서 제공되는 서비스 사용할 수 있으므로)
-    - **액세스 토큰**은 **`HttpHeaders.AUTHORIZATION 헤더`** 에 넣어 응답에 추가한다.
+  - authService.login을 통해 로그인 시도 및 토큰 발급한다.
+  - **리프레시 토큰**은 **`HttpCookie`** 로 만들어 응답에 추가한다.
+    - `maxAge`로 쿠키의 유효기간 설정
+    - `httpOnly`로 JavaScript에서 쿠키에 접근하는 것을 방지
+    - `sameSite`로 서드파티 쿠키 사용을 허용하도록 설정하되 `secure`로 HTTPS에서만 전송되도록 설정 (소셜 로그인과 같이 다른 도메인에서 제공되는 서비스 사용할 수 있으므로)
+  - **액세스 토큰**은 **`HttpHeaders.AUTHORIZATION 헤더`** 에 넣어 응답에 추가한다.
 
 ```java 
 @PostMapping("/login")  
@@ -1906,6 +1906,7 @@ JWT는 세션 데이터의 서버 측 스토리지가 필요하지 않으므로 
 🖍️ OAuth + JWT 구현 시 프엔과 백엔의 역할 <br>
 - https://velog.io/@max9106/OAuth
 ---
+
 # 📂 CEOS WEEK 5: Docker
 <br>  
 
@@ -1919,20 +1920,42 @@ JWT는 세션 데이터의 서버 측 스토리지가 필요하지 않으므로 
 ### 1️⃣ 로컬에서 도커 실행해보기
 ###  1. 기존 VM vs Docker
 ### 기존 VM
--   운영체제 위에서 가상화 소프트웨어를 사용해 하드웨어를 애뮬레이션해 게스트 운영체제를 생성 (ex) VMWare, VirtualBox
+
+[![](https://github.com/kiworkshop/2021-docker-study/raw/master/1%ED%9A%8C%EC%B0%A8/yoonseo/img/container-vm-whatcontainer_2.png)](https://github.com/kiworkshop/2021-docker-study/blob/master/1%ED%9A%8C%EC%B0%A8/yoonseo/img/container-vm-whatcontainer_2.png)
+
+-   운영체제 위에서 가상화 소프트웨어를 사용해 하드웨어를 애뮬레이션해 게스트 운영체제를 생성
 -   가상 머신은 물리적 호스트와 그 위에 설치되는 가상화 하이퍼바이저에서 작동
-    [![](https://github.com/kiworkshop/2021-docker-study/raw/master/1%ED%9A%8C%EC%B0%A8/yoonseo/img/container-vm-whatcontainer_2.png)](https://github.com/kiworkshop/2021-docker-study/blob/master/1%ED%9A%8C%EC%B0%A8/yoonseo/img/container-vm-whatcontainer_2.png)
+  -   **하이퍼바이저**란? 서로 다른 복수 개의 OS를 단일 물리 머신 위에서 스케줄링 할 수 있는 소프트웨어
+  - <**Type1**> 운영체제 없이 바로 Hypervisor가 설치됨. 해당 머신은 Hypervisor로만 사용할 수 있음. ex) XEN
+  - <**Type2**> 운영체제를 설치하고, 그 위에 Hypervisor가 실행되는 형태. Hypervisor 외에 다른 프로세스들도 띄울 수 있음. ex) KVM, QEMU, Virtualbox
+    <br>
+    - KVM vs QEMU?: QEMU는 가상화 옵션이 폭넓지만 컴파일 시간이 오래 걸림. KVM는 같은 종류의 CPU 아키텍처만 가상화할 수 있지만 Binary Translation을 수행하지 않기 때문에 성능이 향상됨.
+    - ➤ 서로의 단점을 보완하며 같은 호스트 머신상에서 필요에 따라 함께 사용할 수 있음
+    - ➤ ex. CPU는 호스트 머신과 게스트 머신을 동일한 아키텍처로 가져가며 KVM을 통해 가속화 + DD는 QEMU의 도움을 받아 드라이버로 에뮬레이션 하여 전 가상화
+
+> ⭐️전 가상화(**“Full Virtualizaion”**): 가상 머신이 구동할 OS 혹은 DD를 수정하지 않고 그대로 사용할 수 있는 경우
+
+ <br>
+📝 위 하이퍼바이저 내용은 모두 
+
+[네이버클라우드 기술블로그](https://medium.com/naver-cloud-platform/%EB%84%A4%EC%9D%B4%EB%B2%84%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EA%B0%80%EC%83%81%ED%99%94-%EA%B0%9C%EB%85%90-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-qemu-vs-kvm-962113641799) 를 참조했습니다.
+
+
+<br>
+
+![Hyperviseur svg](https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/9ee85a44-620f-4165-8ac5-20a9a2f1241d)
+
 
 ### Docker
 -   게스트 OS를 설치하지 않고 이미지에 애플리케이션만 격리해서 설치
-  -   호스트 OS와 실행 환경인 도커 엔진을 공유
-  -   메모리 접근, 파일시스템, 네트워크 속도가 가상머신에 비해 월등히 빠름
-      ![Container what is container](https://www.docker.com/wp-content/uploads/2021/11/container-what-is-container.png)
+-   호스트 OS와 실행 환경인 도커 엔진을 공유
+-   메모리 접근, 파일시스템, 네트워크 속도가 가상머신에 비해 월등히 빠름
+    ![Container what is container](https://www.docker.com/wp-content/uploads/2021/11/container-what-is-container.png)
 
 ###  2. Docker에 대해 더 알아보기
 ### 정의
 -   리눅스 **컨테이너** 기반의 오픈소스 가상화 플랫폼
-  -   다양한 환경을 컨테이너로 추상화하고, 동일한 인터페이스를 제공해 프로그램의 배포 및 관리를 단순하게 제공 - 컨테이너의 다양화
+-   다양한 환경을 컨테이너로 추상화하고, 동일한 인터페이스를 제공해 프로그램의 배포 및 관리를 단순하게 제공 - 컨테이너의 다양화
     -   컨테이너는 격리된 공간에서  `프로세스`  가 동작하는 기술
     -   프로세스 자체를 격리시키기 때문에 CPU나 메모리는 프로세스가 필요한 만큼만 추가로 사용
 
@@ -1944,30 +1967,30 @@ JWT는 세션 데이터의 서버 측 스토리지가 필요하지 않으므로 
 
 **도커 Server(Daemon)**
 -   컨테이너 생성, 실행, 이미지 관리 등 도커 엔진을 통한 모든 작업을 수행
--   도커 서비스를 관리하는 다른 도커 데몬과 통신
+-   도커 서비스를 관리하는 다른 도커 데몬과 통신
 -   로컬에선 유닉스 소켓, 원격에선 TCP 소켓을 통해 클라이언트의 요청을 받아서 처리
 
 ### 이미지와 컨테이너
 컨테이너를 만들기 위해서는 총 세가지가 필요함 :  **도커파일, 이미지, 컨테이너**
 
--   **Dockerfile**
-  -   이미지 생성 과정을 작성한 것
-  -   Dockerfile에 작성된 내용을 토대로 이미지를 생성하게 됨
-  -   의존성 패키지, 설정파일, script, 환경변수 등 모든 것을 관리
+**Dockerfile**
+-   이미지 생성 과정을 작성한 것
+-   Dockerfile에 작성된 내용을 토대로 이미지를 생성하게 됨
+-   의존성 패키지, 설정파일, script, 환경변수 등 모든 것을 관리
 
--   **Image**
-  -   컨테이너 실행에 필요한 파일과 설정값 등(코드, 런타임, 환경, 시스템 툴, 시스템 라이브러리등)을 포함하고 있는 것
-  -   상태값이 변하지 않음
-  -   추가되거나 변하는 값은  **컨테이너에 저장**
+**Image**
+-   컨테이너 실행에 필요한 파일과 설정값 등(코드, 런타임, 환경, 시스템 툴, 시스템 라이브러리등)을 포함하고 있는 것
+-   상태값이 변하지 않음
+-   추가되거나 변하는 값은  **컨테이너에 저장**
 
--   **Container**
-  -  Image를 고립된 환경에서 개별적인 시스템 안에서 실행할 수 있는 공간
-  - container 안에서 image를 이용해 어플리케이션이 구동
+**Container**
+-  Image를 고립된 환경에서 개별적인 시스템 안에서 실행할 수 있는 공간
+- container 안에서 image를 이용해 어플리케이션이 구동
 
 ### Docker Network
 컨테이너를 생성하게 되면 컨테이너는 **NET namespace**라는 기술을 통해 구현된 가상화 기법을 사용하여 각자 독립된 네트워크 공간을 할당받음
 
-> NET namespace  
+> ⭐️ NET namespace  
 > Network interface, iptables 등 네트워크 리소스와 관련된 정보를 분할하여 각각 다른 namespace에 할당함
 
 ### 종류
@@ -2026,9 +2049,9 @@ docker0         8000.02420149e168       no              veth9159bb2
 ### 구조
 ![](https://blog.kakaocdn.net/dn/m9R1m/btrIFH4bS30/zJkupwtBS1WeGWXrfSbu40/img.png)
 
-1️⃣ 컨테이너를 생성하면 컨테이너는 호스트와 통신하기 위한  eth0라는 네트워크 인터페이스를 할당받음
-2️⃣ 동시에 호스트에도  veth (virtual ethernet)라는 네트워크 인터페이스가 할당되고 컨테이너에 할당된  eth0 인터페이스와 통신
-3️⃣ 호스트에 할당된 veth 인터페이스는 docker0와 바인딩되고 docker0는 호스트의 eth0 인터페이스와 연결되어 외부로부터 들어온 요청을 처리
+1️⃣ 컨테이너를 생성하면 컨테이너는 호스트와 통신하기 위한  eth0라는 네트워크 인터페이스를 할당받음 <br>
+2️⃣ 동시에 호스트에도  veth (virtual ethernet)라는 네트워크 인터페이스가 할당되고 컨테이너에 할당된  eth0 인터페이스와 통신 <br>
+3️⃣ 호스트에 할당된 veth 인터페이스는 docker0와 바인딩되고 docker0는 호스트의 eth0 인터페이스와 연결되어 외부로부터 들어온 요청을 처리 <br>
 
 ###  3. Docker 로컬에서 실행해보기
 **Dockerfile**
@@ -2042,11 +2065,11 @@ docker0         8000.02420149e168       no              veth9159bb2
 - 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 툴
 > Compose is a tool for defining and running multi-container Docker applications.
 <br>
--   docker-compose로 개발환경 구성 시 장점 (출처: [지마켓 기술블로그](https://dev.gmarket.com/72))
-  -   언제/어디서나, OS가 다른 상황에서도 동일한 환경구성이 가능
-  -   모두 동일한 개발환경을 경험하기 때문에 개발환경에 이슈가 발생해도 소통이 쉬움
-  -   복잡한 환경도 스크립트화 할 수 있기 때문에 자동화가 가능하고 조작이 쉬움
-  -   `docker-compose cli`를 이용하여 쉽게 애플리케이션을 관리할 수 있고 자동화가 가능
+-   docker-compose로 개발환경 구성 시 장점 (출처: [지마켓 기술블로그](https://dev.gmarket.com/72)) <br>
+-   언제/어디서나, OS가 다른 상황에서도 동일한 환경구성이 가능 <br>
+-   모두 동일한 개발환경을 경험하기 때문에 개발환경에 이슈가 발생해도 소통이 쉬움 <br>
+-   복잡한 환경도 스크립트화 할 수 있기 때문에 자동화가 가능하고 조작이 쉬움 <br>
+-   `docker-compose cli`를 이용하여 쉽게 애플리케이션을 관리할 수 있고 자동화가 가능 <br><br>
 
 STEP 1. jar 파일 생성: Gradle 탭에서 Tasks-build-bootJar 실행<br>
 STEP 2. Dockerfile 작성 후 Docker 이미지 빌드
@@ -2056,7 +2079,8 @@ STEP 3. docker-compose 작성 후 로컬 도커 실행
 `docker-compose -f docker-compose.yml up --build`
 
 <br>
-docker ps 명령어로 확인했을 때 두 개의 이미지가 실행되고 있고 [http://localhost:8080](http://localhost:8080/) 에 접속해 서버가 잘 띄워져있다면 성공
+docker ps 명령어로 확인했을 때 두 개의 이미지가 실행되고 있고 [http://localhost:8080](http://localhost:8080/) 에 접속해 
+서버가 잘 띄워져있다면 성공
 
 ↓<br>
 <img width="1338" alt="스크린샷 2023-11-18 21 29 23" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/f2090190-1c1e-4f7e-9a98-5ba1f6d09b39">
@@ -2087,10 +2111,10 @@ docker ps 명령어로 확인했을 때 두 개의 이미지가 실행되고 있
 ```
 #### Comment
 1. Reponse의 data로 사용자 이메일로 보낸 본인인증 코드를 보냄
-2. 사용자가 입력한 본인 인증코드와 동일한지 확인한 이후 회원가입을 진행하도록 함
+2. 사용자가 입력한 본인 인증코드와 동일한지 확인한 이후 회원가입을 진행하도록 함
 4. 이미 가입된 이메일이라면 status는 FAIL로 보내짐
 
-#### Logic
+#### Logic
 
 **STEP1. MailConfig**
 이메일 전송에 사용되는 JavaMailSender를 설정하는 클래스로 이메일 전송 환경을 구성함
@@ -2114,7 +2138,7 @@ return ResponseEntity.ok(responseDto);
 }
 ```
 
-**STEP3. Service**
+**STEP3. Service**
 회원가입 인증 코드를 생성하고 해당 코드를 이메일로 발송하는 기능을 제공함
 - 랜덤 8자리 인증 코드 생성 (영문 소문자, 대문자, 숫자 중에서 랜덤하게 조합)
 ```java
@@ -2209,7 +2233,9 @@ public String sendSimpleMessage(String to) throws Exception {
 WebSocketMessageBrokerConfigurer를 인터페이스로 구현하고 StompHandler를 인터셉트로 적용한 클래스
 
 > **WebSocketMessageBrokerConfigurer**: 메세징 프로토콜(STOMP)로 메시지를 처리하는 방법들을 정의한 interface
+
 > _**STOMP(Simple Text Oriented Messaging Protocal)**_ -> 데이터 교환을 위한 형식과 규칙을 정의하는 메세징 프로토콜
+
 > _**메시지 브로커(Message Broker)**_-> 송신자(Publisher)의 메시지 프로토콜 형식으로 부터의 메세지를 수신자(Subscriber)의 메세지 프로토콜 형식으로 변환해서 전달하는 중간 프로그램 모듈
 
 - 메시지를 중간에서 라우팅할 때 사용하는 메시지 브로커를 설정함
@@ -2247,7 +2273,7 @@ public void registerStompEndpoints(StompEndpointRegistry registry) {
     } 
     return message; }
 ```
-### 🤝 ChatRoom (채팅방) 생성
+### 🤝 ChatRoom (채팅방) 생성
 
 **ChatRoomController**
 현재 인증된 사용자 정보를 주입받고 HTTP 요청 바디에 있는 데이터를 `ChatRoomRequest` 객체로 매핑
@@ -2438,4 +2464,4 @@ private ChatMessage createTalkMessage(ChatRoom chatRoom, User sender, ChatMessag
 - https://yoo11052.tistory.com/208
 - https://velog.io/@whattsup_kim/Docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC
 - https://wildeveloperetrain.tistory.com/79
-
+- https://medium.com/naver-cloud-platform/%EB%84%A4%EC%9D%B4%EB%B2%84%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EA%B0%80%EC%83%81%ED%99%94-%EA%B0%9C%EB%85%90-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-qemu-vs-kvm-962113641799
