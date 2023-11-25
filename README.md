@@ -2489,24 +2489,24 @@ dockerhub에 push 후 EC2에서 pull 해와 배포 완료하였습니다.
 <img width="469" alt="스크린샷 2023-11-24 01 24 27" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/d7118ce2-2412-44a4-ac38-0afc3e182b83">
 
 
-- docker hub 로그인
+- docker hub 로그인<br>
   ``` sudo docker login ``` <br>
   -  ⛔️ **에러 발생 - Error saving credentials: error storing credentials - err: exit status 1, out: write permissions error**
   - 🔧 **해결방법**: `~/.docker/config.json` 삭제
 
 
-- docker hub 재로그인
+- docker hub 재로그인
   ``` sudo docker login ``` <br>
 
-- docker hub에 push
+- docker hub에 push
   ``` sudo docker push <레포지토리명>/<이미지명>:<태그> ``` <br>
 
 ![image](https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/d28b5753-088f-44dc-a7ff-d476a5d8f36e)
 
-- docker hub에서 확인
+- docker hub에서 확인<br>
   <img width="550" alt="스크린샷 2023-11-24 01 25 13" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/263dbaf5-87dd-4c04-9248-98f2332ffa1c">
 
-- EC2 생성
+- EC2 생성<br>
   <img width="550" alt="스크린샷 2023-11-24 01 53 47" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/be514f27-2d61-4862-a27b-751af86d4ffa">
 
 - EC2에서 docker 설치
@@ -2578,25 +2578,25 @@ FAILURE: Build failed with an exception.
 
 → 실행 성공적으로 됨
 
--실행 중 확인
+-실행 중 확인<br>
 <img width="550" alt="스크린샷 2023-11-24 23 34 50" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/f2b3d287-967f-4a8a-86a8-49865d0aacd9">
 <br>
--EIP 할당
+-EIP 할당<br>
 <img width="550" alt="스크린샷 2023-11-25 13 10 07" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/9d7f98e0-0f6e-4a93-b376-4455b7c9e025"><br>
 
--도메인 구매 후 EC2에 연결 & 레코드 업데이트
+-도메인 구매 후 EC2에 연결 & 레코드 업데이트<br>
 <img width="550" alt="스크린샷 2023-11-25 13 28 48" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/fb593c44-ae53-4e28-a4e2-7ee3476d105e">
 <br>**↓**<br>
 <img width="550" alt="스크린샷 2023-11-25 14 09 31" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/75bf5e5b-fc07-46e2-bfc4-2ffa9511d2c9"><br>
 
-- Target Group 생성
+- Target Group 생성<br>
   <img width="550" alt="스크린샷 2023-11-25 15 53 13" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/28a77bb4-b0de-479c-b980-ccbf7eca58b9"><br>
 
 
-- ELB 생성
+- ELB 생성<br>
   <img width="550" alt="스크린샷 2023-11-25 14 08 00" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/0db3b0be-50e3-4ec2-8c00-9061981f7be5"><br>
 
-- 인증서 발급 및 HTTPS 리다이렉트 규칙 생성
+- 인증서 발급 및 HTTPS 리다이렉트 규칙 생성<br>
   <img width="550" alt="스크린샷 2023-11-25 17 45 10" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/47bc4ffa-3d5f-4384-8432-530faa957684"><br>
 
 
@@ -2649,7 +2649,7 @@ Swap:              0           0           0
 
 <br>
 
-- 메모리 스왑 후 애플리케이션 재실행 및 조회
+- 메모리 스왑 후 애플리케이션 재실행 및 조회<br>
   <img width="550" alt="스크린샷 2023-11-25 17 30 28" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/cf46aa7b-fef5-4640-baac-fa802f904595">
 
 → ps 후 stuck 안되고 조회 잘 됨
