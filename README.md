@@ -2465,3 +2465,202 @@ private ChatMessage createTalkMessage(ChatRoom chatRoom, User sender, ChatMessag
 - https://velog.io/@whattsup_kim/Docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC
 - https://wildeveloperetrain.tistory.com/79
 - https://medium.com/naver-cloud-platform/%EB%84%A4%EC%9D%B4%EB%B2%84%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EA%B0%80%EC%83%81%ED%99%94-%EA%B0%9C%EB%85%90-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-qemu-vs-kvm-962113641799
+
+---
+# 📂 CEOS WEEK 6: Github Action을 이용한 CI/CD
+<br>  
+
+### 🐳  6주차 목표
+
+### 1️⃣ 도커 이미지 배포하기
+### 2️⃣ 배포환경에 대한 테스트 스크린샷 올리기
+---  
+### 🐳 6주차 미션
+
+dockerhub에 push 후 EC2에서 pull 해와 배포 완료하였습니다.
+
+- docker image commit
+
+``` sudo docker commit ```
+
+- docker image 확인
+
+``` sudo docker images ``` <br>
+<img width="469" alt="스크린샷 2023-11-24 01 24 27" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/d7118ce2-2412-44a4-ac38-0afc3e182b83">
+
+
+- docker hub 로그인
+  ``` sudo docker login ``` <br>
+  -  ⛔️ **에러 발생 - Error saving credentials: error storing credentials - err: exit status 1, out: write permissions error**
+  - 🔧 **해결방법**: `~/.docker/config.json` 삭제
+
+
+- docker hub 재로그인
+  ``` sudo docker login ``` <br>
+
+- docker hub에 push
+  ``` sudo docker push <레포지토리명>/<이미지명>:<태그> ``` <br>
+
+![image](https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/d28b5753-088f-44dc-a7ff-d476a5d8f36e)
+
+- docker hub에서 확인
+  <img width="550" alt="스크린샷 2023-11-24 01 25 13" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/263dbaf5-87dd-4c04-9248-98f2332ffa1c">
+
+- EC2 생성
+  <img width="550" alt="스크린샷 2023-11-24 01 53 47" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/be514f27-2d61-4862-a27b-751af86d4ffa">
+
+- EC2에서 docker 설치
+ ```
+//도커 설치  
+$ sudo yum install docker
+$ docker -v
+
+// 도커 compose 설치 
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose   
+
+// 도커 시작하기     
+$ sudo systemctl start docker
+
+// 실행 권한 적용   
+$ sudo chmod +x /usr/local/bin/docker-compose    
+$ sudo chmod 666 /var/run/docker.sock
+$ docker-compose -v
+
+```
+
+![image](https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/d9d7a2ba-b931-46fb-be7c-f9bc02149cbb)
+
+- EC2 내 docker-compose에 환경변수 적용
+ ```
+docker-compose config    
+```
+
+- jar 파일 생성
+  - ⛔️ **문제 1: AWS EC2 Gradle 배포 시 :compileJava 부분에서 stuck되는 현상 발생!**
+  - 👀 **원인**: Gradle과 버전 호환 문제
+  - 🔧 **해결방법**:
+    `sudo apt-get install lib32stdc++6 `
+    `sudo apt-get install lib32z1`
+  - [참고 링크](https://stackoverflow.com/questions/32360632/gradle-build-gets-stuck-at-executing-tasks-appgeneratedebugsources-appgen)
+
+  - ⛔️ **문제 2: When using COPY with more than one source file, the destination must be a directory and end with a /**
+  - 👀 **원인**: plain jar, executable jar 두 개가 있어서 발생
+  - **🔧 해결방법1**: plain jar 삭제
+  - **🔧 해결방법2**: **executable jar만 생성**하도록 build파일에 설정
+    ` jar { enabled = false }`
+  - [참고 링크](https://velog.io/@jeongmin78/CICD-When-using-COPY-with-more-than-one-source-file-the-destination-must-be-a-directory-and-end-with-a%20https://dev-j.tistory.com/22)
+
+- jar 파일 재생성
+
+```
+// 테스트 제외하고, jar 파일 빌드만
+$ ./gradlew clean build -x test
+``` 
+<br>
+
+test를 제외하지 않으면
+> Task :compileTestJava FAILED
+FAILURE: Build failed with an exception.
+발생하게 됨.
+
+→ 이제 무사히 빌드되었다.
+
+<br>
+
+- docker-compose 이용해 백그라운드로 애플리케이션 실행
+
+  - **⛔️  문제: Couldn’t connect to Docker daemon at http+docker://localhost - is it running?**
+  - **👀 해결방법**: `sudo docker-compose up` (앞에 sudo 붙여 실행)
+  - [참고 링크](https://forums.docker.com/t/couldnt-connect-to-docker-daemon-at-http-docker-localhost-is-it-running/87257/4)
+
+<br>
+<img width="550" alt="스크린샷 2023-11-24 23 33 56" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/3ed3f5ef-e84b-46a4-926e-27d9a513a82a">
+
+→ 실행 성공적으로 됨
+
+-실행 중 확인
+<img width="550" alt="스크린샷 2023-11-24 23 34 50" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/f2b3d287-967f-4a8a-86a8-49865d0aacd9">
+<br>
+-EIP 할당
+<img width="550" alt="스크린샷 2023-11-25 13 10 07" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/9d7f98e0-0f6e-4a93-b376-4455b7c9e025"><br>
+
+-도메인 구매 후 EC2에 연결 & 레코드 업데이트
+<img width="550" alt="스크린샷 2023-11-25 13 28 48" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/fb593c44-ae53-4e28-a4e2-7ee3476d105e">
+<br>**↓**<br>
+<img width="550" alt="스크린샷 2023-11-25 14 09 31" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/75bf5e5b-fc07-46e2-bfc4-2ffa9511d2c9"><br>
+
+- Target Group 생성
+  <img width="550" alt="스크린샷 2023-11-25 15 53 13" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/28a77bb4-b0de-479c-b980-ccbf7eca58b9"><br>
+
+
+- ELB 생성
+  <img width="550" alt="스크린샷 2023-11-25 14 08 00" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/0db3b0be-50e3-4ec2-8c00-9061981f7be5"><br>
+
+- 인증서 발급 및 HTTPS 리다이렉트 규칙 생성
+  <img width="550" alt="스크린샷 2023-11-25 17 45 10" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/47bc4ffa-3d5f-4384-8432-530faa957684"><br>
+
+
+- ELB 생성 후 EC2 재부팅을 하고, docker-compose 로 애플리케이션 재실행했는데..
+
+``` 
+ubuntu@ip-172-xx:~/spring-daagn-market-18th$ docker-compose up -d
+Starting db ... done
+Starting web ... done
+ubuntu@ip-172-xx:~/spring-daagn-market-18th$ docker-compose ps
+``` 
+
+⛔️ 실행 후 docker-compose ps로 조회했는데 shell이 stuck되는 현상 발생 <br>
+EC2를 거의 오십번 껐다 키고 ~~수백가지~~ 방법을 시도해보았는데 문제 해결이 안 됨. <br>
+설마 설마 해서 확인해보니.. <br>
+``` 
+               total        used        free      shared  buff/cache   available
+Mem:             949         540          84           0         324         253
+Swap:              0           0           0
+``` 
+메모리 사용량을 확인하였는데 현재 사용 가능한 메모리가 253MB밖에 남아있지 않았다. 충분한 자원이 없어서 애플리케이션이나 도커 컨테이너가 정상적으로 실행되지 않았나 싶음.
+
+- **🔧 EC2 메모리 스왑 진행** <br>
+
+  1. **스왑 파일 생성:**
+
+  `sudo fallocate -l 1G /swapfile`
+
+  1GB 크기의 스왑 파일을 생성
+
+  2. **스왑 파일 권한 설정:**
+
+  `sudo chmod 600 /swapfile`
+
+  스왑 파일에 대한 보안을 위해 권한 설정
+
+  3. **스왑 파일 포맷:**
+
+  `sudo mkswap /swapfile`
+
+  4. **스왑 영역 활성화:**
+
+  `sudo swapon /swapfile`
+
+  생성한 스왑 파일 활성화
+
+  5. **부팅 시 자동으로 스왑 파일 활성화:**
+
+  `echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab`
+
+<br>
+
+- 메모리 스왑 후 애플리케이션 재실행 및 조회
+  <img width="550" alt="스크린샷 2023-11-25 17 30 28" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/cf46aa7b-fef5-4640-baac-fa802f904595">
+
+→ ps 후 stuck 안되고 조회 잘 됨
+
+
+- (현재 해결 중) ⛔️ web 컨테이너가 정상적으로 실행된 이후 약 2분 뒤 쯤 exit 되어버리는 문제
+
+<img width="180" alt="스크린샷 2023-11-25 17 47 44" src="https://github.com/CEOS-Developers/spring-daagn-market-18th/assets/77966605/6b92c5d7-7daf-43c3-b984-7970eda149df"> <br>
+
+→ HTTP로 리다이렉트는 잘 되나 현재 Web container 문제로 접근이 불가능한 상황
+
+DB와의 연동 문제인 것 같아 이 방향으로 해결 중
+
+(해결 후 내용 추가해놓겠습니다!) 
