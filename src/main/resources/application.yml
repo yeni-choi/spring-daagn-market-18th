@@ -2,7 +2,7 @@ spring:
   jwt:
     token:
       secret: ${JWT_TOKEN}
-      access-token-validity-in-seconds: 43200
+      access-token-validity-in-seconds: ${JWT_VALID}
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
