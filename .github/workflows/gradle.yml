@@ -57,5 +57,5 @@ jobs:
                     sudo docker rm -f $(docker ps -qa)
                     sudo docker pull yeniwithchoi/ceos-karrot
                     sudo docker pull yeniwithchoi/ceos-nginx
-                    docker-compose -f docker-compose.yaml --env-file ./.env up -d
+                    docker-compose -f docker-compose.yml --env-file ./.env up -d
                     docker image prune -f
